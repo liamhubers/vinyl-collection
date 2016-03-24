@@ -1,13 +1,15 @@
 import path from 'path';
 import webpack from 'webpack';
 
+const entryFolder = 'source';
+
 export default {
   devtool: 'source-map',
   debug: true,
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/dev-server',
-    './source/index.js',
+    `./${entryFolder}/index.js`,
   ],
   output: {
     path: path.join(__dirname, 'build'),
@@ -20,7 +22,7 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_PATH': JSON.stringify('source'),
+        'NODE_PATH': JSON.stringify(entryFolder),
         'NODE_ENV': JSON.stringify('development'),
       }
     }),
@@ -29,7 +31,7 @@ export default {
     loaders: [{
       test: /\.js$/,
       loaders: ['react-hot', 'babel'],
-      include: [path.join(__dirname, 'src')]
+      include: [path.join(__dirname, entryFolder)]
     }, {
       test: /\.less$/,
       loader: 'style!css!autoprefixer-loader!less'
