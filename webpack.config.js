@@ -22,16 +22,20 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_PATH': JSON.stringify(entryFolder),
-        'NODE_ENV': JSON.stringify('development'),
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        'NODE_PATH': JSON.stringify(process.env.NODE_PATH),
       }
     }),
   ],
+  resolve: {
+    root: __dirname + '/' + process.env.NODE_PATH
+  },
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
-      include: [path.join(__dirname, entryFolder)]
+      loader: 'babel',
+      includes: [__dirname],
+      exclude: [path.join(__dirname, 'node_modules')]
     }, {
       test: /\.less$/,
       loader: 'style!css!autoprefixer-loader!less'
