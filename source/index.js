@@ -4,6 +4,9 @@ import React from 'react';
 import { render } from 'react-dom';
 
 render(
-  <h1>Hello, world!123</h1>,
+  <div>
+    <h1>Hodor</h1>
+    <h2>test</h2>
+  </div>,
   document.getElementById('root')
 );
