@@ -9,7 +9,7 @@ export default {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/dev-server',
-    `./${entryFolder}/index.js`,
+    path.resolve(`./${entryFolder}/index.js`),
   ],
   output: {
     path: path.join(__dirname, 'build'),
@@ -17,8 +17,6 @@ export default {
     publicPath: '/static/',
   },
   plugins: [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
@@ -27,15 +25,11 @@ export default {
       }
     }),
   ],
-  resolve: {
-    root: __dirname + '/' + process.env.NODE_PATH
-  },
   module: {
     loaders: [{
       test: /\.js$/,
-      loader: 'babel',
-      includes: [__dirname],
-      exclude: [path.join(__dirname, 'node_modules')]
+      loaders: ['react-hot', 'babel'],
+      exclude: [path.resolve('node_modules')]
     }, {
       test: /\.less$/,
       loader: 'style!css!autoprefixer-loader!less'
@@ -46,5 +40,8 @@ export default {
       test: [/\.svg/, /\.eot/, /\.ttf/, /\.woff/, /\.woff2/],
       loader: "file-loader?prefix=assets/fonts/"
     }]
+  },
+  resolve: {
+    root: path.resolve("./source")
   }
 };
