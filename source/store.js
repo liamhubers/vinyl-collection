@@ -9,7 +9,7 @@ import rootReducer from 'reducers/root';
 const store = compose(
   applyMiddleware(thunkMiddleware, createLogger()),
   reduxReactRouter({
-      createHistory: (options) => createHistory(Object.assign({queryKey: false}, options))
+    createHistory: (options) => createHistory(Object.assign({ queryKey: false }, options)),
   })
 )(createStore)(rootReducer, {});
 

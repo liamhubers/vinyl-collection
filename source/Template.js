@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import 'assets/less/template.less';
@@ -16,6 +16,10 @@ const Template = ({ children }) => {
       {children}
     </div>
   );
+};
+
+Template.propTypes = {
+  children: PropTypes.any,
 };
 
 export default Template;

@@ -4,11 +4,11 @@ const initialState = {
   }, {
     name: 'B',
   }],
-}
+};
 
 export default function vinyl(state = initialState, action) {
-  switch(action.type) {
-  default:
-    return state;
+  switch (action.type) {
+    default:
+      return state;
   }
 }

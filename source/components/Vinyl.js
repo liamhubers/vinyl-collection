@@ -15,7 +15,7 @@ const style = {
 class Vinyl extends Component {
   static propTypes = {
     vinyl: PropTypes.object.isRequired,
-  }
+  };
 
   render() {
     const { vinyl } = this.props;
