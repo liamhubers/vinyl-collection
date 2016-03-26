@@ -2,12 +2,11 @@ import React, { Component, PropTypes } from 'react';
 
 const style = {
   vinyl: {
-    backgroundColor: 'red',
+    marginBottom: '15px',
     overflow: 'hidden',
-    float: 'left',
   },
   item: {
-    padding: '15px',
+    marginRight: '15px',
     float: 'left',
   },
 };
