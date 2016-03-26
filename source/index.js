@@ -8,14 +8,14 @@ import { ReduxRouter } from 'redux-router';
 
 import store from 'store';
 
-import Container from 'Container';
+import Template from 'Template';
 import Home from 'containers/Home';
 import Test from 'containers/Test';
 
 render(
   <Provider store={store}>
     <ReduxRouter>
-      <Route path="/" component={Container}>
+      <Route path="/" component={Template}>
         <IndexRoute component={Home}/>
         <Route path="/test" component={Test}/>
       </Route>
